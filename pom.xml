@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <groupId>org.sireum.hamr</groupId>
     <artifactId>inspector-capabilities</artifactId>
@@ -63,18 +63,17 @@
                         <phase>validate</phase>
                         <configuration>
                             <rules>
-                                <bannedDependencies>
-                                    <!-- exclude unless it matches includes list -->
-                                    <excludes>
-                                        <exclude>org.sireum</exclude>
-                                    </excludes>
-                                    <includes>
-                                        <include>org.sireum:library_2.12:${sireum.version}</include>
-                                        <include>org.sireum:art_2.12:${art.version}</include>
-                                    </includes>
-                                    <message>sireum libraries must match the specified versions</message>
-                                    <searchTransitive>true</searchTransitive>
-                                </bannedDependencies>
+<!--                                <requireSameVersions>-->
+<!--                                    <dependencies>-->
+<!--                                        <dependency>org.sireum.library_2.12</dependency>-->
+<!--                                        <dependency>org.sireum.macros_2.12</dependency>-->
+<!--                                    </dependencies>-->
+<!--                                </requireSameVersions>-->s
+                                <requireSameVersions>
+                                    <dependencies>
+                                        <dependency>org.sireum.art_2.12</dependency>
+                                    </dependencies>
+                                </requireSameVersions>
                             </rules>
                             <fail>true</fail>
                             <failFast>true</failFast>

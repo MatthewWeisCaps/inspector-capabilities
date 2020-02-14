@@ -29,6 +29,7 @@
             <groupId>org.sireum</groupId>
             <artifactId>art_2.12</artifactId>
             <version>${art.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

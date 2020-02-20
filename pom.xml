@@ -4,18 +4,19 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
 
-    <groupId>org.sireum.hamr</groupId>
+    <parent>
+        <groupId>com.github.MatthewWeisCaps</groupId>
+        <artifactId>inspector-bom</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
     <artifactId>inspector-capabilities</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
     <name>inspector-capabilities</name>
     <description>Common traits for HAMR Inspector libraries</description>
 
     <properties>
         <generated.repo>${project.basedir}/generated/repo</generated.repo>
-        <sireum.version>3.3.1</sireum.version>
-        <art.version>0.1.0-SNAPSHOT</art.version>
-        <java.version>11</java.version>
-        <scala.version>2.12.7</scala.version>
     </properties>
 
     <repositories>
@@ -24,20 +25,22 @@
             <name>generated</name>
             <url>file:${generated.repo}</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
         <dependency>
             <groupId>org.sireum</groupId>
             <artifactId>library_2.12</artifactId>
-            <version>${sireum.version}</version>
         </dependency>
 
         <!-- art -->
         <dependency>
             <groupId>org.sireum</groupId>
             <artifactId>art_2.12</artifactId>
-            <version>${art.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -47,21 +50,10 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <id>add-scala-sources</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>src/main/scala</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
+            </plugin>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -99,12 +91,6 @@
                         <phase>validate</phase>
                         <configuration>
                             <rules>
-<!--                                <requireSameVersions>-->
-<!--                                    <dependencies>-->
-<!--                                        <dependency>org.sireum.library_2.12</dependency>-->
-<!--                                        <dependency>org.sireum.macros_2.12</dependency>-->
-<!--                                    </dependencies>-->
-<!--                                </requireSameVersions>-->
                                 <requireSameVersions>
                                     <dependencies>
                                         <dependency>org.sireum.art_2.12</dependency>
@@ -116,41 +102,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>scala-maven-plugin</artifactId>
-                <version>4.2.0</version>
-                <executions>
-                    <execution>
-                        <id>scala-compile-first</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <scalaVersion>${scala.version}</scalaVersion>
-                </configuration>
-            </plugin>
+            </plugin
         </plugins>
     </build>
 

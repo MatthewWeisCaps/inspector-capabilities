@@ -41,7 +41,7 @@ object InspectorHAMRLauncher {
     if (instance != null) {
       val artThreadGroup = new ThreadGroup(Thread.currentThread.getThreadGroup, THREAD_GROUP_NAME)
       this.serializer = blueprint.serializer().andThen(_.toString())
-      this.deserializer = blueprint.deserializer() // ".compose(_.toString())" would be necessary if deserializer took sireum String
+      this.deserializer = blueprint.deserializer().compose(_.toString())
       val thread = new Thread(artThreadGroup, () => {
         ArtDebug.registerListener(instance)
         Art.run(blueprint.ad())

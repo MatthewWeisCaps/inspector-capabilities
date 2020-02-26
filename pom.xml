@@ -13,7 +13,7 @@
     <artifactId>inspector-capabilities</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>inspector-capabilities</name>
-    <description>Common traits for HAMR Inspector libraries</description>
+    <description>API for launching HAMR projects with Inspector monitoring/injection enabled.</description>
 
     <properties>
         <generated.repo>${project.basedir}/generated/repo</generated.repo>
@@ -35,6 +35,7 @@
     </repositories>
 
     <dependencies>
+
         <dependency>
             <groupId>org.sireum</groupId>
             <artifactId>library_2.12</artifactId>
@@ -45,6 +46,11 @@
             <groupId>org.sireum</groupId>
             <artifactId>art_2.12</artifactId>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.MatthewWeisCaps</groupId>
+            <artifactId>inspector-common</artifactId>
         </dependency>
     </dependencies>
 

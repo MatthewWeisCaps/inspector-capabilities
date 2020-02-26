@@ -2,9 +2,10 @@ package org.sireum.hamr.inspector.capabilities
 
 import java.util.ServiceLoader
 
-import art.{ArchitectureDescription, Art, ArtDebug, DataContent}
+import art.{Art, ArtDebug, DataContent}
+import org.sireum.hamr.inspector.common.InspectionBlueprint
 
-object SlangInspector {
+object InspectorHAMRLauncher {
 
   val THREAD_GROUP_NAME: String = "Art"
 
@@ -36,20 +37,19 @@ object SlangInspector {
 
   // serializer returns org.sireum.String but deserializer takes normal String to prevent callers from needing
   // extra toString() calls when using JSON/MsgPack to create lambdas
-  def launchSlangProject(architectureDescription: ArchitectureDescription,
-                         serializer: DataContent => org.sireum.String, deserializer: String => DataContent): Unit = {
+  def run(blueprint: InspectionBlueprint): Unit = {
     if (instance != null) {
       val artThreadGroup = new ThreadGroup(Thread.currentThread.getThreadGroup, THREAD_GROUP_NAME)
-      this.serializer = serializer.andThen(_.toString())
-      this.deserializer = deserializer // ".compose(_.toString())" would be necessary if deserializer took sireum String
+      this.serializer = blueprint.serializer().andThen(_.toString())
+      this.deserializer = blueprint.deserializer() // ".compose(_.toString())" would be necessary if deserializer took sireum String
       val thread = new Thread(artThreadGroup, () => {
         ArtDebug.registerListener(instance)
-        Art.run(architectureDescription)
+        Art.run(blueprint.ad())
       })
       thread.start()
     } else {
       // if no service provider was found, run art as normal (a warning message would have been printed during load())
-      Art.run(architectureDescription)
+      Art.run(blueprint.ad())
     }
   }
 

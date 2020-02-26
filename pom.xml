@@ -51,6 +51,12 @@
         <dependency>
             <groupId>com.github.MatthewWeisCaps</groupId>
             <artifactId>inspector-common</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.github.MatthewWeisCaps</groupId>
+                    <artifactId>inspector-stream</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

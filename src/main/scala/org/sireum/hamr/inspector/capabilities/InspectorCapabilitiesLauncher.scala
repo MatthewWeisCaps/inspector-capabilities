@@ -30,7 +30,7 @@ import java.util.ServiceLoader
 import art.{Art, ArtDebug, DataContent}
 import org.sireum.hamr.inspector.common.InspectionBlueprint
 
-object InspectorHAMRLauncher {
+object InspectorCapabilitiesLauncher {
 
   val THREAD_GROUP_NAME: String = "Art"
 

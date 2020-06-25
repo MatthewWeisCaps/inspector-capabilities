@@ -5,7 +5,7 @@
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>org.sireum.hamr</groupId>
+        <groupId>org.sireum</groupId>
         <artifactId>inspector-bom</artifactId>
         <version>0.5-SNAPSHOT</version>
     </parent>
@@ -44,11 +44,11 @@
 <!--            <version>${art.version}</version>-->
         </dependency>
         <dependency>
-            <groupId>org.sireum.hamr</groupId>
+            <groupId>org.sireum</groupId>
             <artifactId>inspector-common</artifactId>
             <exclusions>
                 <exclusion>
-                    <groupId>org.sireum.hamr</groupId>
+                    <groupId>org.sireum</groupId>
                     <artifactId>inspector-stream</artifactId>
                 </exclusion>
             </exclusions>

@@ -7,12 +7,13 @@
     <parent>
         <groupId>org.sireum</groupId>
         <artifactId>inspector-bom</artifactId>
-        <version>0.5-SNAPSHOT</version>
+        <version>0.6-SNAPSHOT</version>
+        <relativePath>../inspector-bom</relativePath>
     </parent>
 
-    <groupId>org.sireum.hamr</groupId>
+    <groupId>org.sireum</groupId>
     <artifactId>inspector-capabilities</artifactId>
-    <version>0.5-SNAPSHOT</version>
+    <version>0.6-SNAPSHOT</version>
     <name>inspector-capabilities</name>
     <description>API for launching HAMR projects with Inspector monitoring/injection enabled.</description>
 
@@ -30,19 +31,9 @@
     </repositories>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.sireum.slang-embedded-art</groupId>-->
-<!--            <artifactId>slang-embedded-art_2.12</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.sireum.runtime</groupId>-->
-<!--            <artifactId>library_2.12</artifactId>-->
-<!--&lt;!&ndash;            <version>${sireum.version}</version>&ndash;&gt;-->
-<!--        </dependency>-->
         <dependency>
-            <groupId>org.sireum.slang-embedded-art</groupId>
-            <artifactId>slang-embedded-art_2.12</artifactId>
-<!--            <version>${art.version}</version>-->
+            <groupId>org.sireum.kekinian</groupId>
+            <artifactId>slang-embedded-art_2.13</artifactId>
         </dependency>
         <dependency>
             <groupId>org.sireum</groupId>
